@@ -6,10 +6,11 @@ import matplotlib.pyplot as plt
 
 # Constants
 NUM_TELLERS = 3
-QUEUE_SIZE = 30
-MAX_SERVICE_TIME = 10
-QUANTUM_TIME = 3
-CUSTOMER_LIMIT = 50
+QUEUE_SIZE = 100
+MAX_SERVICE_TIME = 20
+MIN_SERVICE_TIME = 10
+QUANTUM_TIME = 2
+CUSTOMER_LIMIT = 100
 
 customer_queue = queue.Queue(QUEUE_SIZE)
 
@@ -57,7 +58,7 @@ def empty_queue(q):
 
 # Customer Arrival Function
 def customer_arrival(customer_id):
-    service_time = random.randint(2, MAX_SERVICE_TIME)
+    service_time = random.randint(MIN_SERVICE_TIME, MAX_SERVICE_TIME)
     arrival_time = time.time()
     with lock:
         arrival_times[customer_id] = arrival_time
