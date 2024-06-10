@@ -6,11 +6,11 @@ import matplotlib.pyplot as plt
 
 # Constants
 NUM_TELLERS = 3
-QUEUE_SIZE = 50
-MAX_SERVICE_TIME = 15
+QUEUE_SIZE = 100
+MAX_SERVICE_TIME = 16
 MIN_SERVICE_TIME = 8
-QUANTUM_TIME = 2
-CUSTOMER_LIMIT = 50
+QUANTUM_TIME = 4
+CUSTOMER_LIMIT = 100
 
 customer_queue = queue.Queue(QUEUE_SIZE)
 
