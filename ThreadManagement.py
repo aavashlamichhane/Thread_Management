@@ -6,11 +6,11 @@ import matplotlib.pyplot as plt
 
 # Constants
 NUM_TELLERS = 3
-QUEUE_SIZE = 100
-MAX_SERVICE_TIME = 20
-MIN_SERVICE_TIME = 10
+QUEUE_SIZE = 50
+MAX_SERVICE_TIME = 15
+MIN_SERVICE_TIME = 8
 QUANTUM_TIME = 2
-CUSTOMER_LIMIT = 100
+CUSTOMER_LIMIT = 50
 
 customer_queue = queue.Queue(QUEUE_SIZE)
 
@@ -215,10 +215,11 @@ def main(service_function, description):
     try:
         tellers = start_tellers(service_function)
         while True:
-            if customer_id > CUSTOMER_LIMIT:
-                raise LimitCross('Customer Limit reached.')
-            customer_arrival(customer_id)
-            customer_id += 1
+            if customer_id <= CUSTOMER_LIMIT:
+                customer_arrival(customer_id)
+                customer_id += 1
+            elif customer_queue.empty():
+                raise LimitCross('Finished.')
             time.sleep(random.uniform(0.5, 2))
     except (KeyboardInterrupt,LimitCross) as e:
         print(f"Simulation stopped. {e}")
