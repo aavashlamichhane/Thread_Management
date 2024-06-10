@@ -258,7 +258,8 @@ def calculate_stats(description):
 
     return avg_turnaround_time, avg_waiting_time, avg_response_time
 
-def plot_results(fcfs, sjf, preemptive_sjf, rr):
+# def plot_results(fcfs, sjf, preemptive_sjf, rr):
+def plot_results(fcfs, sjf, rr):
     # algorithms = ['FCFS', 'SJF', 'Preemptive SJF', 'Round Robin']
     # turnaround_times = [fcfs[0], sjf[0], preemptive_sjf[0], rr[0]]
     # waiting_times = [fcfs[1], sjf[1], preemptive_sjf[1], rr[1]]
@@ -292,4 +293,4 @@ if __name__ == "__main__":
     # preemptive_sjf_stats = main(teller_service_preemptive_sjf, "Preemptive SJF")
     print("\nStarting Round Robin Simulation...")
     rr_stats = main(teller_service_rr, "Round Robin")
-    # plot_results(fcfs_stats, sjf_stats, preemptive_sjf_stats, rr_stats)
+    plot_results(fcfs_stats, sjf_stats, rr_stats)
