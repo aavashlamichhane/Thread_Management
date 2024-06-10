@@ -218,6 +218,10 @@ def main(service_function, description):
             if customer_id <= CUSTOMER_LIMIT:
                 customer_arrival(customer_id)
                 customer_id += 1
+                if customer_id > CUSTOMER_LIMIT/3:
+                    time.sleep(random.uniform(0.5, 4))
+                elif customer_id > CUSTOMER_LIMIT/1.5:
+                    time.sleep(random.uniform(0.5,7))
             elif customer_queue.empty():
                 raise LimitCross('Finished.')
             time.sleep(random.uniform(0.5, 2))
@@ -261,12 +265,12 @@ def calculate_stats(description):
     return avg_turnaround_time, avg_waiting_time, avg_response_time
 
 # def plot_results(fcfs, sjf, preemptive_sjf, rr):
-def plot_results(fcfs, sjf, rr):
+
     # algorithms = ['FCFS', 'SJF', 'Preemptive SJF', 'Round Robin']
     # turnaround_times = [fcfs[0], sjf[0], preemptive_sjf[0], rr[0]]
     # waiting_times = [fcfs[1], sjf[1], preemptive_sjf[1], rr[1]]
     # response_times = [fcfs[2], sjf[2], preemptive_sjf[2], rr[2]]
-    
+def plot_results(fcfs, sjf, rr):
     algorithms = ['FCFS', 'SJF', 'Round Robin']
     turnaround_times = [fcfs[0], sjf[0], rr[0]]
     waiting_times = [fcfs[1], sjf[1], rr[1]]
